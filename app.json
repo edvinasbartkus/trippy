@@ -1,0 +1,12 @@
+{
+  "name": "trippy",
+  "displayName": "trippy",
+  "expo": {
+    "name": "trippy",
+    "slug": "trippy",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
