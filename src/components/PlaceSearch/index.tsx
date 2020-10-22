@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from "react";
 import { Button, Text } from "react-native";
 import styled from "styled-components/native";
+import { MapContext } from '../../contexts/MapContext';
 
 const KEY = 'pk.eyJ1IjoiZWR2aW5hc2JhcnRrdXMiLCJhIjoiY2s2djV3bHd0MGcxMzNta2h6MmFrbjVpcyJ9.zxKeJrSWjbOleW3MUBwh0g';
 
@@ -30,8 +31,9 @@ export function PlaceSearch() {
     const features = output?.data?.features;
 
     setResults(features.map((feature: FeatureJSON) => {
-      console.log(feature)
-      const [lat, lng] = feature.geometry?.coordinates || [];
+
+      const [lng, lat] = feature.geometry?.coordinates || [];
+      console.log(lng, lat)
       return {
         name: feature.place_name,
         text: feature.text,
@@ -41,13 +43,15 @@ export function PlaceSearch() {
     }))
   }, [search]);
 
+  const { setLatLng } = React.useContext(MapContext)
+
   return (
     <Container>
       <StyledTextInput value={search} onChangeText={setSearch} />
       <Button title="Search" onPress={onSearch} />
 
-      {results.map(place => {
-        return <StyledPlace key={place.text}>
+      {results.map((place, idx) => {
+        return <StyledPlace key={place.text + idx} onPress={() => setLatLng(place.lat, place.lng)}>
           <Text>{place.text}: {place.name}</Text>
         </StyledPlace>
       })}
@@ -65,6 +69,6 @@ const StyledTextInput = styled.TextInput`
   margin-bottom: 5px;
 `;
 
-const StyledPlace = styled.View`
+const StyledPlace = styled.TouchableOpacity`
   padding: 5px;
 `
