@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text } from 'react-native';
 import styled from 'styled-components/native';
 import { MapContext } from '../../contexts/MapContext';
+import { TripContext } from '../../contexts/TripContext';
 
 type Place = {
   title: string;
@@ -13,15 +14,17 @@ type PlacesListProps = {
   places: Place[]
 }
 
-export function PlacesList({ places }: PlacesListProps) {
+export function PlacesList() {
   const { setLatLng } = React.useContext(MapContext);
+  const { state } = React.useContext(TripContext);
+  const places = state.places;
 
   return (
     <Container>
       <StyledTitle>List of Places</StyledTitle>
       {places.map((place, idx) => {
-        return <StyledPlace key={place.title+idx} onPress={() => setLatLng(place.lat, place.lng)}>
-          <Text>{place.title}</Text>
+        return <StyledPlace key={place.description+idx} onPress={() => setLatLng(place.lat, place.lng)}>
+          <Text>{place.description}</Text>
         </StyledPlace>
       })}
     </Container>

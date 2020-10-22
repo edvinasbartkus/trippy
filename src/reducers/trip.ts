@@ -1,27 +1,30 @@
-type Place = {
+export type Place = {
   description: string;
   lat: number;
-  lon: number;
+  lng: number;
 };
 
-type StateType = {
+export type StateType = {
   places: Place[];
 };
 
-enum ActionTypes {
+export enum ActionTypes {
   ADD_PLACE = "ADD_PLACE",
 }
 
-type Action = {
+export type Action = {
   type: ActionTypes;
   data: unknown;
 };
 
-const initialState: StateType = {
-  places: [],
+export const initialState: StateType = {
+  places: [
+    {description: 'Vilnius', lat: 54.658145, lng: 25.2086729},
+    {description: 'London', lat: 51.5285582, lng: -0.241678}
+  ],
 };
 
-export function tripReducer(state: StateType = initialState, action: Action) {
+export function tripReducer(state: StateType = initialState, action: Action): StateType {
   switch (action.type) {
     case ActionTypes.ADD_PLACE:
       return {

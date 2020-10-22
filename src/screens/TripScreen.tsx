@@ -5,20 +5,21 @@ import { PlaceSearch } from "../components/PlaceSearch";
 import { PlacesList } from "../components/PlacesList";
 import { SplitView } from "../components/SplitView/index";
 import { MapContextContainer } from "../containers/MapContextContainer";
-
-const PLACES = [
-  {title: 'Vilnius', lat: 54.658145, lng: 25.2086729},
-  {title: 'London', lat: 51.5285582, lng: -0.241678}
-]
+import { TripContext } from "../contexts/TripContext";
+import { initialState, tripReducer } from "../reducers/trip";
 
 export function TripScreen() {
+  const [state, dispatch] = React.useReducer(tripReducer, initialState)
+
   return (
     <MapContextContainer>
       <SplitView>
         <Maps />
         <View>
-          <PlacesList places={PLACES} />
-          <PlaceSearch />
+          <TripContext.Provider value={{state, dispatch}}>
+            <PlacesList />
+            <PlaceSearch />
+          </TripContext.Provider>
         </View>
       </SplitView>
     </MapContextContainer>

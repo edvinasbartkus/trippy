@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React from "react";
-import { Button, Text } from "react-native";
+import { Button, Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { MapContext } from '../../contexts/MapContext';
+import { TripContext } from '../../contexts/TripContext';
+import { ActionTypes, Place } from '../../reducers/trip';
 
 const KEY = 'pk.eyJ1IjoiZWR2aW5hc2JhcnRrdXMiLCJhIjoiY2s2djV3bHd0MGcxMzNta2h6MmFrbjVpcyJ9.zxKeJrSWjbOleW3MUBwh0g';
 
@@ -44,15 +46,27 @@ export function PlaceSearch() {
   }, [search]);
 
   const { setLatLng } = React.useContext(MapContext)
+  const { dispatch } = React.useContext(TripContext)
 
   return (
     <Container>
       <StyledTextInput value={search} onChangeText={setSearch} />
       <Button title="Search" onPress={onSearch} />
 
-      {results.map((place, idx) => {
-        return <StyledPlace key={place.text + idx} onPress={() => setLatLng(place.lat, place.lng)}>
-          <Text>{place.text}: {place.name}</Text>
+      {results.map((result, idx) => {
+        const place: Place = {
+          description: result.text,
+          lat: result.lat,
+          lng: result.lng
+        }
+
+        return <StyledPlace key={place.description + idx} onPress={() => setLatLng(place.lat, place.lng)}>
+          <Text>
+            <TouchableOpacity onPress={() => dispatch({ type: ActionTypes.ADD_PLACE, data: place })}>
+              <Text>+</Text>
+            </TouchableOpacity>
+            {place.description}
+          </Text>
         </StyledPlace>
       })}
     </Container>
