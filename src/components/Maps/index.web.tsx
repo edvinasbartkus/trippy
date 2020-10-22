@@ -1,5 +1,5 @@
 import React from "react";
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import ReactMapboxGl, { Feature, Layer } from "react-mapbox-gl";
 import { MapContext } from "../../contexts/MapContext";
 
 const Map = ReactMapboxGl({
@@ -8,16 +8,29 @@ const Map = ReactMapboxGl({
 });
 
 export function Maps() {
-  const mapContext = React.useContext(MapContext);
+  const { lat, lng, places } = React.useContext(MapContext);
 
   return (
     <Map
-      center={[mapContext.lng, mapContext.lat]}
+      center={[lng, lat]}
       style="mapbox://styles/mapbox/streets-v9"
       containerStyle={{
         height: "100vh",
         width: "100%",
       }}
-    />
+    >
+      {places.map((place, idx) => {
+        return (
+          <Layer
+            key={place.description + idx}
+            type="symbol"
+            id={place.description}
+            layout={{ "icon-image": "marker-15" }}
+          >
+            <Feature coordinates={[place.lng, place.lat]} />
+          </Layer>
+        );
+      })}
+    </Map>
   );
 }

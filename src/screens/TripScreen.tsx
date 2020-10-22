@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View } from "react-native";
 import { Maps } from "../components/Maps";
 import { PlaceSearch } from "../components/PlaceSearch";
@@ -10,7 +10,6 @@ import { initialState, tripReducer } from "../reducers/trip";
 
 export function TripScreen() {
   const [state, dispatch] = React.useReducer(tripReducer, initialState)
-
   return (
     <MapContextContainer>
       <SplitView>

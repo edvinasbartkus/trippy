@@ -35,7 +35,6 @@ export function PlaceSearch() {
     setResults(features.map((feature: FeatureJSON) => {
 
       const [lng, lat] = feature.geometry?.coordinates || [];
-      console.log(lng, lat)
       return {
         name: feature.place_name,
         text: feature.text,

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text } from 'react-native';
 import styled from 'styled-components/native';
 import { MapContext } from '../../contexts/MapContext';
 import { TripContext } from '../../contexts/TripContext';
+
 
 type Place = {
   title: string;
@@ -10,14 +11,14 @@ type Place = {
   lng: number;
 }
 
-type PlacesListProps = {
-  places: Place[]
-}
-
 export function PlacesList() {
-  const { setLatLng } = React.useContext(MapContext);
+  const { setLatLng, setPlaces } = React.useContext(MapContext);
   const { state } = React.useContext(TripContext);
   const places = state.places;
+
+  useEffect(() => {
+    setPlaces(places)
+  }, [places])
 
   return (
     <Container>

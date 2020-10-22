@@ -19,8 +19,10 @@ export type Action = {
 
 export const initialState: StateType = {
   places: [
-    {description: 'Vilnius', lat: 54.658145, lng: 25.2086729},
-    {description: 'London', lat: 51.5285582, lng: -0.241678}
+    {description: 'The British Museum', lat: 51.5194133, lng: -0.1291506},
+    {description: 'Tate Modern', lat: 51.5075953, lng: -0.1015504},
+    // {description: 'Vilnius', lat: 54.658145, lng: 25.2086729},
+    // {description: 'London', lat: 51.5285582, lng: -0.241678}
   ],
 };
 
