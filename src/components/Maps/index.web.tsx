@@ -8,8 +8,6 @@ const Map = ReactMapboxGl({
 });
 
 export function Maps() {
-  // const mapRef = React.useRef();
-
   const mapContext = React.useContext(MapContext);
 
   return (
