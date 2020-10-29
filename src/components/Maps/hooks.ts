@@ -5,7 +5,7 @@ import { Place } from '../../reducers/trip';
 
 const url = (lat1: number, lng1: number, lat2: number, lng2: number) => `https://api.mapbox.com/directions/v5/mapbox/walking/${lat1},${lng1};${lat2},${lng2}?access_token=` + mapboxToken;
 
-function retrieveDirections ([place1, place2]: [Place, Place]) {
+function retrieveDirections ([place1, place2]: [Place, Place]): Promise<string> {
   return axios
     .get(url(place1.lng, place1.lat, place2.lng, place2.lat))
     .then(({ data }) => {
@@ -16,7 +16,7 @@ function retrieveDirections ([place1, place2]: [Place, Place]) {
 }
 
 export function useDirections (places: Place[]) {
-  const [directions, setDirections] = React.useState([])
+  const [directions, setDirections] = React.useState<string[]>([])
   const pairs = arrayToPairs(places)
 
   useEffect(() => {
@@ -28,8 +28,10 @@ export function useDirections (places: Place[]) {
   return directions
 }
 
-export function arrayToPairs (arr: any[]) {
-  const pairs = []
+type Pair<T> = [T, T];
+
+export function arrayToPairs<T> (arr: T[]): Array<Pair<T>> { 
+  const pairs: Array<Pair<T>> = []
   let [prevPlace] = arr
   for (const place of arr.slice(1)) {
     pairs.push([prevPlace, place])
