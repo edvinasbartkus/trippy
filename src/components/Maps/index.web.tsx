@@ -1,14 +1,19 @@
 import React from "react";
-import ReactMapboxGl, { Feature, Layer } from "react-mapbox-gl";
+import ReactMapboxGl, { Feature, GeoJSONLayer, Layer } from "react-mapbox-gl";
 import { MapContext } from "../../contexts/MapContext";
+import polyline from "@mapbox/polyline";
+import { mapboxToken } from "./config";
+import { useDirections } from "./hooks";
 
 const Map = ReactMapboxGl({
-  accessToken:
-    "pk.eyJ1IjoiZWR2aW5hc2JhcnRrdXMiLCJhIjoiY2s2djV3bHd0MGcxMzNta2h6MmFrbjVpcyJ9.zxKeJrSWjbOleW3MUBwh0g",
+  accessToken: mapboxToken
 });
 
 export function Maps() {
   const { lat, lng, places } = React.useContext(MapContext);
+  const directions = useDirections(places);
+
+  console.log(directions);
 
   return (
     <Map
@@ -31,6 +36,26 @@ export function Maps() {
           </Layer>
         );
       })}
+      {directions.map(direction => <GeoJSONLayer
+        key={direction}
+        lineLayout={{ "line-cap": "round" }}
+        linePaint={{
+          "line-color": "black",
+          "line-width": 3.0,
+        }}
+        data={{
+          type: "Feature",
+          properties: {},
+          geometry: {
+            type: "LineString",
+            coordinates: polyline
+              .decode(
+                direction
+              )
+              .map((it) => it.reverse()),
+          },
+        }}
+      />)}
     </Map>
   );
 }

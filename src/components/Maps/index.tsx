@@ -1,11 +1,14 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, Polyline } from "react-native-maps";
 import { MapContext } from "../../contexts/MapContext";
+import polyline from "@mapbox/polyline";
+import { useDirections } from "./hooks";
 
 export function Maps() {
   const mapContext = React.useContext(MapContext);
   const { lat, lng, places } = mapContext;
+  const directions = useDirections(places);
   const region = {
     latitude: lat,
     longitude: lng,
@@ -23,6 +26,14 @@ export function Maps() {
           />
         );
       })}
+      {directions.map((direction) => (
+        <Polyline
+          key={direction}
+          coordinates={polyline
+            .decode(direction)
+            .map(([latitude, longitude]) => ({ latitude, longitude }))}
+        />
+      ))}
     </MapView>
   );
 }
