@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import axios from 'axios'
-import { mapboxToken } from './config'
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { Place } from '../../reducers/trip';
+import { mapboxToken } from './config';
 
 const url = (lat1: number, lng1: number, lat2: number, lng2: number) => `https://api.mapbox.com/directions/v5/mapbox/walking/${lat1},${lng1};${lat2},${lng2}?access_token=` + mapboxToken;
 

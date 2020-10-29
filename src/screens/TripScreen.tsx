@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { View } from "react-native";
-import { Maps } from "../components/Maps";
+import { AbstractMap } from "../components/AbstractMap";
 import { PlaceSearch } from "../components/PlaceSearch";
 import { PlacesList } from "../components/PlacesList";
 import { SplitView } from "../components/SplitView/index";
@@ -13,7 +13,7 @@ export function TripScreen() {
   return (
     <MapContextContainer>
       <SplitView>
-        <Maps />
+        <AbstractMap />
         <View>
           <TripContext.Provider value={{state, dispatch}}>
             <PlacesList />
