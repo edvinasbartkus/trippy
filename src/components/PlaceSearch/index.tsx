@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 import { MapContext } from '../../contexts/MapContext';
 import { TripContext } from '../../contexts/TripContext';
 import { mapboxToken } from '../../mapConfig';
-import { ActionTypes, Place } from '../../reducers/trip';
+import { ActionTypes, Place, RoutingProfile } from '../../reducers/trip';
 
 const KEY = mapboxToken;
 
@@ -57,7 +57,8 @@ export function PlaceSearch() {
         const place: Place = {
           description: result.text,
           lat: result.lat,
-          lng: result.lng
+          lng: result.lng,
+          routingProfile: RoutingProfile.WALKING
         }
 
         return <StyledPlace key={place.description + idx} onPress={() => setLatLng(place.lat, place.lng)}>
