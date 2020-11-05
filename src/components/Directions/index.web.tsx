@@ -1,9 +1,8 @@
 import React from "react";
 import { GeoJSONLayer } from "react-mapbox-gl";
-import polylineDecoder from "@mapbox/polyline";
 import { DirectionsProps } from ".";
 
-export function Directions({ polyline }: DirectionsProps) {
+export function Directions({ coordinates }: DirectionsProps) {
   return (
     <GeoJSONLayer
       lineLayout={{ "line-cap": "round" }}
@@ -16,9 +15,7 @@ export function Directions({ polyline }: DirectionsProps) {
         properties: {},
         geometry: {
           type: "LineString",
-          coordinates: polylineDecoder
-            .decode(polyline)
-            .map((it) => it.reverse()),
+          coordinates: coordinates.map((it) => [...it].reverse()),
         },
       }}
     />

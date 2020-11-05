@@ -1,7 +1,7 @@
 import React from "react";
-import { Maps } from '../Maps';
+import { Maps } from "../Maps";
 import { MapContext } from "../../contexts/MapContext";
-import { useDirections } from "../Maps/hooks";
+import { useDirections } from "./hooks";
 import { Marker } from "../Marker";
 import { Directions } from "../Directions";
 
@@ -21,8 +21,8 @@ export function AbstractMap() {
           />
         );
       })}
-      {directions.map((route) => {
-        return <Directions key={route} polyline={route} />;
+      {directions.map((directionsStruct) => {
+        return <Directions key={directionsStruct.polyline} coordinates={directionsStruct.coordinates} />;
       })}
     </Maps>
   );

@@ -1,15 +1,13 @@
 import React from "react";
 import { Polyline } from "react-native-maps";
-import polylineDecoder from "@mapbox/polyline";
 
 export type DirectionsProps = {
-  polyline: string;
+  coordinates: number[][];
 }
 
-export function Directions({ polyline }: DirectionsProps) {
+export function Directions({ coordinates }: DirectionsProps) {
   return <Polyline
-    coordinates={polylineDecoder
-      .decode(polyline)
+    coordinates={coordinates
       .map(([latitude, longitude]) => ({ latitude, longitude }))}
   />;
 }

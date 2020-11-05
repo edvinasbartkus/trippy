@@ -1,7 +1,7 @@
 import React from "react";
 import ReactMapboxGl from "react-mapbox-gl";
 import { MapsProps } from ".";
-import { mapboxToken } from "./config";
+import { mapboxToken } from "../../mapConfig";
 
 const Map = ReactMapboxGl({
   accessToken: mapboxToken
