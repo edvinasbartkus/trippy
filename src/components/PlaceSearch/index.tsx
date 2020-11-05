@@ -4,9 +4,10 @@ import { Button, Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { MapContext } from '../../contexts/MapContext';
 import { TripContext } from '../../contexts/TripContext';
+import { mapboxToken } from '../../mapConfig';
 import { ActionTypes, Place } from '../../reducers/trip';
 
-const KEY = 'pk.eyJ1IjoiZWR2aW5hc2JhcnRrdXMiLCJhIjoiY2s2djV3bHd0MGcxMzNta2h6MmFrbjVpcyJ9.zxKeJrSWjbOleW3MUBwh0g';
+const KEY = mapboxToken;
 
 type Result = {
   name: string;
