@@ -18,7 +18,15 @@ export function MapContextContainer({ children }: MapContextContainerProps) {
       setLng(lng);
     },
     places,
-    setPlaces: (places: Place[]) => setPlaces(places),
+    setPlaces: (places: Place[]) => {
+      setPlaces(places);
+
+      places.map(place => [place.lat, place.lng])
+      const latSum = places.reduce((sum, place) => sum += place.lat, 0);
+      const lngSum = places.reduce((sum, place) => sum += place.lng, 0);
+      setLng(lngSum/places.length);
+      setLat(latSum/places.length);
+    },
   };
   return <MapContext.Provider value={context}>{children}</MapContext.Provider>;
 }
