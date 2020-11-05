@@ -8,8 +8,7 @@ import { DirectionsControlView } from '../DirectionsControlView';
 
 export function PlacesList() {
   const { setLatLng, setPlaces } = React.useContext(MapContext);
-  const { state } = React.useContext(TripContext);
-  const places = state.places;
+  const { state: { places } } = React.useContext(TripContext);
   const directions = useDirections(places);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { View } from "react-native";
+import React from "react";
+import { SafeAreaView, ScrollView } from "react-native";
 import { AbstractMap } from "../components/AbstractMap";
 import { PlaceSearch } from "../components/PlaceSearch";
 import { PlacesList } from "../components/PlacesList";
@@ -14,12 +14,14 @@ export function TripScreen() {
     <MapContextContainer>
       <SplitView>
         <AbstractMap />
-        <View>
-          <TripContext.Provider value={{state, dispatch}}>
-            <PlacesList />
-            <PlaceSearch />
-          </TripContext.Provider>
-        </View>
+        <SafeAreaView>
+          <ScrollView>
+            <TripContext.Provider value={{state, dispatch}}>
+              <PlacesList />
+              <PlaceSearch />
+            </TripContext.Provider>
+          </ScrollView>
+        </SafeAreaView>
       </SplitView>
     </MapContextContainer>
   );
