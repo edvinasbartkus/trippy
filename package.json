@@ -9,6 +9,7 @@
     "build": "next build"
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^2.0.0-alpha.1",
     "@mapbox/polyline": "^1.1.1",
     "@types/styled-components": "^5.1.4",
     "axios": "^0.20.0",
@@ -21,9 +22,9 @@
     "react-dom": "16.13.1",
     "react-mapbox-gl": "^4.8.6",
     "react-native": "~0.63.3",
-    "react-native-gesture-handler": "~1.7.0",
+    "react-native-gesture-handler": "^1.8.0",
     "react-native-maps": "0.27.1",
-    "react-native-reanimated": "~1.13.0",
+    "react-native-reanimated": "^2.0.0-alpha.9.1",
     "react-native-screens": "~2.10.1",
     "react-native-unimodules": "~0.11.0",
     "react-native-web": "~0.13.12",
