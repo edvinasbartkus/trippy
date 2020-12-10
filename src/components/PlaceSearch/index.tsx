@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from "react";
 import { Button, Text, TouchableOpacity } from "react-native";
+import { Link } from '../Router';
 import styled from "styled-components/native";
 import { MapContext } from '../../contexts/MapContext';
 import { TripContext } from '../../contexts/TripContext';
@@ -50,6 +51,9 @@ export function PlaceSearch() {
 
   return (
     <Container>
+      <Link to="/">
+        <Text>Back</Text>
+      </Link>
       <StyledTextInput value={search} onChangeText={setSearch} />
       <Button title="Search" onPress={onSearch} />
 

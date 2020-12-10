@@ -25,8 +25,11 @@ const url = (
 function retrieveDirections([place1, place2]: [Place, Place]): Promise<
   DirectionsStruct
 > {
+  const directionsURL = url(place1.lng, place1.lat, place2.lng, place2.lat, place2.routingProfile);
+  console.log(directionsURL);
+
   return axios
-    .get(url(place1.lng, place1.lat, place2.lng, place2.lat, place2.routingProfile))
+    .get(directionsURL)
     .then(({ data }) => {
       const [route] = data.routes;
       const { geometry, duration, distance } = route;
