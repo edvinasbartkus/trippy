@@ -5,6 +5,7 @@ import { MapContext } from '../../contexts/MapContext';
 import { TripContext } from '../../contexts/TripContext';
 import { useDirections } from '../AbstractMap/hooks';
 import { DirectionsControlView } from '../DirectionsControlView';
+import { Link } from '../Router';
 
 export function PlacesList() {
   const { setLatLng, setPlaces } = React.useContext(MapContext);
@@ -17,6 +18,9 @@ export function PlacesList() {
 
   return (
     <Container>
+      <Link to="/search">
+        <Text>Search</Text>
+      </Link>
       <StyledTitle>List of Places</StyledTitle>
       {places.map((place, idx) => {
         return <StyledPlace key={place.description+idx} onPress={() => setLatLng(place.lat, place.lng)}>

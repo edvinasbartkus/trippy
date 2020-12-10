@@ -1,16 +1,8 @@
-import React, { useCallback, useMemo, useRef } from 'react'
+import BottomSheet from '@gorhom/bottom-sheet';
+import React, { useCallback, useMemo, useRef } from 'react';
 import styled from 'styled-components/native';
 import { SplitViewProps } from './index.web';
 
-import { View, StyleSheet } from 'react-native';
-import BottomSheet from '@gorhom/bottom-sheet';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-  },
-});
 
 export function SplitView ({ children }: SplitViewProps) {
   const [child1, child2] = children;
@@ -33,13 +25,6 @@ export function SplitView ({ children }: SplitViewProps) {
       <BottomSheet
         ref={bottomSheetRef}
         initialSnapIndex={2}
-        snapPoints={snapPoints}
-        onChange={handleSheetChanges}
-      >
-        <Right>{child2}</Right>
-      </BottomSheet>
-      <BottomSheet
-        initialSnapIndex={1}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
       >
