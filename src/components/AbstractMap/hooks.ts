@@ -33,13 +33,6 @@ function retrieveDirections([place1, place2]: [Place, Place]): Promise<
     .then(({ data }) => {
       const [route] = data.routes;
       const { geometry, duration, distance } = route;
-      console.log(directionsURL, {
-        polyline: geometry,
-        coordinates: polylineDecoder.decode(geometry),
-        type: place2.routingProfile,
-        duration: duration,
-        distance: distance,
-      });
       return {
         polyline: geometry,
         coordinates: polylineDecoder.decode(geometry),
