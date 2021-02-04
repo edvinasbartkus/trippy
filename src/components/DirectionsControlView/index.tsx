@@ -40,7 +40,6 @@ export function DirectionsControlView({
 
   return (
     <Container>
-      <VerticalLine />
       <RoutingProfileContainer>
         {Object.values(RoutingProfile).map((profile) => {
           return (
@@ -102,13 +101,3 @@ const DetailsText = styled.Text`
 const RoutingProfileContainer = styled.View`
   flex-direction: row;
 `;
-
-const VerticalLine = styled.View<{ theme: ThemeProps }>`
-  position: absolute;
-  z-index: 100;
-  top: -5px;
-  margin-top: -10px;
-  width: 3px;
-  height: 120px;
-  background-color: ${props => props.theme.colors.darkCyan};
-`

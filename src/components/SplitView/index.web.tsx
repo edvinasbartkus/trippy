@@ -25,4 +25,5 @@ const Left = styled.View`
 const Right = styled.View`
   width: 50%;
   overflow-y: scroll;
+  background: rgba(245,245,245,1) 0%, rgba(216,216,216,1) 100%);
 `

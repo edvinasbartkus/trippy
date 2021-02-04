@@ -9,12 +9,13 @@
     "build": "next build"
   },
   "dependencies": {
-    "@gorhom/bottom-sheet": "^2.0.0-alpha.1",
+    "@gorhom/bottom-sheet": "^3.0.2-alpha.3",
     "@mapbox/polyline": "^1.1.1",
     "@types/react-router-dom": "^5.1.6",
     "@types/styled-components": "^5.1.4",
     "axios": "^0.20.0",
     "expo": "~39.0.2",
+    "expo-linear-gradient": "~8.3.0",
     "expo-splash-screen": "~0.6.2",
     "expo-updates": "~0.3.3",
     "mapbox-gl": "^1.12.0",
