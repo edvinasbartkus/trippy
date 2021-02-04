@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 import styled from "styled-components/native";
 import { MapContext } from "../../contexts/MapContext";
 import { TripContext } from "../../contexts/TripContext";
@@ -109,7 +109,7 @@ const IterationText = styled.Text<PlaceIterationNumberProps>`
 const PlaceTitleContainer = styled.View<{ theme: ThemeProps }>`
   flex-direction: row;
   align-items: center;
-  background-color: ${props => props.theme.colors.whiteSmoke};
+  background-color: ${props => props.theme.colors.white};
   padding: 15px 10px;
   border-radius: 8px;
 `;
