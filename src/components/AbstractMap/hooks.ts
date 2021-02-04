@@ -22,10 +22,17 @@ const url = (
   `https://api.mapbox.com/directions/v5/mapbox/${type}/${lat1},${lng1};${lat2},${lng2}?access_token=` +
   mapboxToken;
 
-function retrieveDirections([place1, place2]: [Place, Place]): Promise<
-  DirectionsStruct
-> {
-  const directionsURL = url(place1.lng, place1.lat, place2.lng, place2.lat, place2.routingProfile);
+function retrieveDirections([place1, place2]: [
+  Place,
+  Place
+]): Promise<DirectionsStruct> {
+  const directionsURL = url(
+    place1.lng,
+    place1.lat,
+    place2.lng,
+    place2.lat,
+    place2.routingProfile
+  );
   console.log(directionsURL);
 
   return axios
@@ -40,7 +47,7 @@ function retrieveDirections([place1, place2]: [Place, Place]): Promise<
         duration: duration,
         distance: distance,
       };
-    });
+    })
 }
 
 export function useDirections(places: Place[]) {
@@ -48,7 +55,13 @@ export function useDirections(places: Place[]) {
   const pairs = arrayToPairs(places);
 
   useEffect(() => {
-    Promise.all(pairs.map(retrieveDirections)).then(setDirections);
+    Promise
+      .all(pairs.map(retrieveDirections))
+      .then(setDirections)
+      .catch(error => {
+        console.log(error);
+        alert(JSON.stringify(error));
+      });
   }, [places]);
 
   return directions;

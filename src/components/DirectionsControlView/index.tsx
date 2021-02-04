@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { TripContext } from "../../contexts/TripContext";
+import { ThemeProps } from "../../helpers/theme";
 import { ActionTypes, Place, RoutingProfile } from "../../reducers/trip";
 
 const Icons = {
@@ -39,6 +40,7 @@ export function DirectionsControlView({
 
   return (
     <Container>
+      <VerticalLine />
       <RoutingProfileContainer>
         {Object.values(RoutingProfile).map((profile) => {
           return (
@@ -69,12 +71,11 @@ const DetailsContainer = styled.View`
   align-items: center;
 `;
 
-const Container = styled.View`
+const Container = styled.View<{ theme: ThemeProps }>`
+  position: relative;
   flex-direction: row;
   justify-content: space-between;
   padding-bottom: 10px;
-  border-left-width: 3px;
-  border-left-color: blue;
   margin-left: 10px;
   padding-left: 10px;
   padding-top: 10px;
@@ -101,3 +102,13 @@ const DetailsText = styled.Text`
 const RoutingProfileContainer = styled.View`
   flex-direction: row;
 `;
+
+const VerticalLine = styled.View<{ theme: ThemeProps }>`
+  position: absolute;
+  z-index: 100;
+  top: -5px;
+  margin-top: -10px;
+  width: 3px;
+  height: 120px;
+  background-color: ${props => props.theme.colors.darkCyan};
+`

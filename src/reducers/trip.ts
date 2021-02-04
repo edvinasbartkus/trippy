@@ -9,6 +9,7 @@ export type Place = {
   lat: number;
   lng: number;
   routingProfile: RoutingProfile;
+  isVisited: boolean;
 };
 
 export type StateType = {
@@ -32,8 +33,8 @@ export type UpdatePlacePayload = {
 
 export const initialState: StateType = {
   places: [
-    {description: 'The British Museum', lat: 51.5194133, lng: -0.1291506, routingProfile: RoutingProfile.WALKING},
-    {description: 'Tate Modern', lat: 51.5075953, lng: -0.1015504, routingProfile: RoutingProfile.WALKING},
+    {description: 'The British Museum', lat: 51.5194133, lng: -0.1291506, routingProfile: RoutingProfile.WALKING, isVisited: false},
+    {description: 'Tate Modern', lat: 51.5075953, lng: -0.1015504, routingProfile: RoutingProfile.WALKING, isVisited: false},
     // {description: 'Vilnius', lat: 54.658145, lng: 25.2086729},
     // {description: 'London', lat: 51.5285582, lng: -0.241678}
   ],
