@@ -5,16 +5,15 @@ import { TripContext } from "../../contexts/TripContext";
 import { ThemeProps } from "../../helpers/theme";
 import { ActionTypes, Place, RoutingProfile } from "../../reducers/trip";
 
-const Icons = {
-  [RoutingProfile.WALKING]: require("../../icons/walking.png"),
-  [RoutingProfile.DRIVING]: require("../../icons/driving.png"),
-  [RoutingProfile.CYCLING]: require("../../icons/cycling.png"),
-};
+import { WalkIcon } from './WalkIcon'
+import { DriveIcon } from './DriveIcon'
+import { PublicIcon } from './PublicIcon'
+import { CycleIcon } from './CycleIcon'
 
-const BlueIcons = {
-  [RoutingProfile.WALKING]: require("../../icons/blue_walking.png"),
-  [RoutingProfile.DRIVING]: require("../../icons/blue_driving.png"),
-  [RoutingProfile.CYCLING]: require("../../icons/blue_cycling.png"),
+const Icons = {
+  [RoutingProfile.WALKING]: WalkIcon,
+  [RoutingProfile.DRIVING]: DriveIcon,
+  [RoutingProfile.CYCLING]: CycleIcon
 };
 
 type DirectionsControlViewProps = {
@@ -42,15 +41,10 @@ export function DirectionsControlView({
     <Container>
       <RoutingProfileContainer>
         {Object.values(RoutingProfile).map((profile) => {
+          const Icon = Icons[profile]
           return (
             <TouchableOpacity key={profile} onPress={onPress(profile)}>
-              <IconImage
-                source={
-                  place.routingProfile === profile
-                    ? BlueIcons[profile]
-                    : Icons[profile]
-                }
-              />
+              <Icon height={16} width={20} color={place.routingProfile === profile ? 'blue' : 'black'} />
             </TouchableOpacity>
           );
         })}
