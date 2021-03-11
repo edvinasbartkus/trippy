@@ -20,7 +20,7 @@ PODS:
     - UMImageLoaderInterface
   - EXKeepAwake (8.3.0):
     - UMCore
-  - EXLinearGradient (8.3.1):
+  - EXLinearGradient (9.0.0):
     - UMCore
   - EXLocation (9.0.1):
     - UMCore
@@ -273,6 +273,8 @@ PODS:
   - React-jsinspector (0.63.3)
   - react-native-maps (0.27.1):
     - React
+  - react-native-netinfo (6.0.0):
+    - React-Core
   - React-RCTActionSheet (0.63.3):
     - React-Core/RCTActionSheetHeaders (= 0.63.3)
   - React-RCTAnimation (0.63.3):
@@ -333,6 +335,8 @@ PODS:
     - React-Core (= 0.63.3)
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
+  - RNAWSCognito (4.5.13):
+    - React
   - RNGestureHandler (1.8.0):
     - React
   - RNReanimated (2.0.0-alpha.9.1):
@@ -439,6 +443,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-maps (from `../node_modules/react-native-maps`)
+  - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -449,6 +454,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNAWSCognito (from `../node_modules/amazon-cognito-identity-js`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -540,6 +546,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
+  react-native-netinfo:
+    :path: "../node_modules/@react-native-community/netinfo"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -560,6 +568,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNAWSCognito:
+    :path: "../node_modules/amazon-cognito-identity-js"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
@@ -608,7 +618,7 @@ SPEC CHECKSUMS:
   EXFont: a6a4353271395f3bb4ee528b52a5035b4b0e412a
   EXImageLoader: 7153fb1307ac643299a9072b71da0d276f4c7789
   EXKeepAwake: 76eed36786534f6a476748e600fa6faf07ac3d09
-  EXLinearGradient: c7ca1c2933ac240ffbc805c014a72947e227ac75
+  EXLinearGradient: ffc008d7ddcce356534cfdf9bd7fbcdedec4c438
   EXLocation: 90232c6f2773b04a3c146bfda9f181035722c10a
   EXPermissions: 30cbe5b72bd209b65c00884180ad058a60bb413d
   EXSplashScreen: 7ea40b8524f27e7444e3892411c8a4782ab6b4ce
@@ -637,6 +647,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: b56c03e61c0dd5f5801255f2160a815f4a53d451
   React-jsinspector: 8e68ffbfe23880d3ee9bafa8be2777f60b25cbe2
   react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
+  react-native-netinfo: e849fc21ca2f4128a5726c801a82fc6f4a6db50d
   React-RCTActionSheet: 53ea72699698b0b47a6421cb1c8b4ab215a774aa
   React-RCTAnimation: 1befece0b5183c22ae01b966f5583f42e69a83c2
   React-RCTBlob: 0b284339cbe4b15705a05e2313a51c6d8b51fa40
@@ -647,6 +658,7 @@ SPEC CHECKSUMS:
   React-RCTText: 65a6de06a7389098ce24340d1d3556015c38f746
   React-RCTVibration: 8e9fb25724a0805107fc1acc9075e26f814df454
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
+  RNAWSCognito: c9c66de7fc54e8232a3ff9e1fdcadf072ba2886f
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNReanimated: 134a90b150d6ced792147229cc57f221bede860e
   RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2

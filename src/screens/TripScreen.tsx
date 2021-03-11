@@ -2,6 +2,7 @@ import React from "react";
 import { ScrollView } from "react-native";
 import styled, { ThemeProvider } from "styled-components/native";
 import { AbstractMap } from "../components/AbstractMap";
+import Auth from "../components/Auth";
 import { PlaceSearch } from "../components/PlaceSearch";
 import { PlacesList } from "../components/PlacesList";
 import { Route, Router } from "../components/Router";
@@ -22,6 +23,8 @@ export function TripScreen() {
     console.log("Dispatched", action);
     dispatch(action);
   };
+
+  return <Auth />
 
   return (
     <ThemeProvider theme={theme}>
