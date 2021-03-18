@@ -1,27 +1,14 @@
 import React from "react";
-import styled from "styled-components/native";
-import { Text } from "react-native";
+import { ButtonInline } from "../ButtonInline";
+import styled from 'styled-components/native'
 import { Plus } from "./plus";
 
 export function AddDestinationButton() {
-  return (
-    <SearchContainer>
-      <PlusContainer>
-        <Plus />
-      </PlusContainer>
-      <Text>Add destination</Text>
-    </SearchContainer>
-  );
+  return <Container>
+    <ButtonInline IconComponent={Plus} label="Add destination" />
+  </Container>
 }
 
-const SearchContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
+const Container = styled.View`
   padding: 12px 34px;
-`;
-
-const PlusContainer = styled.View`
-  width: 24px;
-  height: 24px;
-  margin-right: 14px;
-`;
+`

@@ -1,28 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Button, TextInput, SafeAreaView } from "react-native";
 import { DataStore } from "@aws-amplify/datastore";
+import { View, Text, Button, TextInput, SafeAreaView } from "react-native";
 import { Trip } from "../../models/index";
+import { useTrips } from "../../helpers/hooks";
 
 export function QueryTrips() {
-  const [trips, setTrips] = useState<Trip[]>([]);
-
-  const retrieveTrips = () => {
-    DataStore.query(Trip).then((trips) => setTrips(trips));
-  }
-
   const onDelete = (trip: Trip) => {
     DataStore.delete(trip)
   }
 
-  useEffect(() => {
-    retrieveTrips();
-
-    const subscriptions = DataStore.observe(Trip).subscribe(msg => {
-      retrieveTrips();
-    })
-
-    return () => subscriptions.unsubscribe();
-  }, []);
+  const trips = useTrips()
 
   return (
     <SafeAreaView>

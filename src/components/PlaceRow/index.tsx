@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { ThemeProps } from "styled-components/native";
-import { LinearGradient } from "expo-linear-gradient";
 import { Text } from "react-native";
 import { Place } from "../../reducers/trip";
 import { DirectionsControlView } from "../DirectionsControlView";
