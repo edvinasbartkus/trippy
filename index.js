@@ -1,6 +1,7 @@
 import { registerRootComponent } from 'expo';
 import Amplify from 'aws-amplify';
-import awsconfig from './src/aws-exports'
+import awsconfig from './src/aws-exports';
+import 'react-native-gesture-handler';
 
 Amplify.configure(awsconfig);
 
